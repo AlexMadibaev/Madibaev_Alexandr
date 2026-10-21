@@ -1,0 +1,29 @@
+/* Dark × Swiss editorial refresh — 2026 */
+:root { --bg:#101113; --surface:#191a1c; --stroke:#343638; --ink:#f4f3ee; --muted:#a5a5a1; --accent:#e5e4df; }
+html {scroll-behavior:smooth}
+body {background:#0d0e10;color:var(--ink);font-family:'Inter','Poppins',sans-serif;letter-spacing:-.015em}
+body::before {content:"";position:fixed;inset:0;pointer-events:none;opacity:.14;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:72px 72px}
+.sidebar,.article,.main-content article {background:#161719;border:1px solid #303134;box-shadow:none}
+.sidebar,.main-content {border-radius:16px}
+.navbar {background:#202123;border:1px solid #353638;border-radius:0 16px 0 16px}
+.navbar-link {font-weight:500;letter-spacing:.025em}
+.navbar-link.active,.navbar-link:hover {color:#fff}
+.name {letter-spacing:-.055em;font-weight:600}
+.article-title,.h2 {letter-spacing:-.055em;font-weight:600}
+.article-title::after {background:#f2f0e8;border-radius:0}
+.about-text {max-width:780px}
+.about-text p {line-height:1.9;color:#bfc0bd}
+.service-item,.content-card,.project-item a,.timeline-item {transition:transform .25s ease,border-color .25s ease}
+.service-item {background:#202123;border:1px solid #38393b;border-radius:12px}
+.service-item:hover,.project-item a:hover {transform:translateY(-4px)}
+.service-item-title {letter-spacing:-.025em}
+.project-img {border-radius:10px;overflow:hidden}
+.project-img img {transition:transform .5s ease}
+.project-item a:hover .project-img img {transform:scale(1.035)}
+.btn {background:#e9e8e2!important;color:#141517!important;border-radius:8px!important;font-weight:600}
+.btn:hover {background:#fff!important}
+.testimonials,.modal-container {display:none!important}
+a:focus-visible,button:focus-visible {outline:2px solid #f4f3ee;outline-offset:4px}
+@media (min-width:1250px) {main {max-width:1480px;gap:28px}.sidebar {min-width:300px}.main-content {width:calc(100% - 328px)}}
+@media (max-width:580px) {.sidebar,.main-content {border-radius:12px}.navbar {border-radius:0 0 12px 12px}.article-title {font-size:28px}.service-item {padding:20px}}
+@media (prefers-reduced-motion:reduce) {*,*::before,*::after {scroll-behavior:auto!important;transition:none!important;animation:none!important}}
