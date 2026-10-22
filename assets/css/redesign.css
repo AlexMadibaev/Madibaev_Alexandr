@@ -22,7 +22,7 @@ body::before {content:"";position:fixed;inset:0;pointer-events:none;opacity:.14;
 .project-item a:hover .project-img img {transform:scale(1.035)}
 .btn {background:#e9e8e2!important;color:#141517!important;border-radius:8px!important;font-weight:600}
 .btn:hover {background:#fff!important}
-.testimonials,.modal-container {display:none!important}
+.testimonials,.modal-container[data-modal-container] {display:none!important}
 a:focus-visible,button:focus-visible {outline:2px solid #f4f3ee;outline-offset:4px}
 @media (min-width:1250px) {main {max-width:1480px;gap:28px}.sidebar {min-width:300px}.main-content {width:calc(100% - 328px)}}
 @media (max-width:580px) {.sidebar,.main-content {border-radius:12px}.navbar {border-radius:0 0 12px 12px}.article-title {font-size:28px}.service-item {padding:20px}}
@@ -50,3 +50,16 @@ a:focus-visible,button:focus-visible {outline:2px solid #f4f3ee;outline-offset:4
 .editorial-projects .project-title {font-size:16px;font-weight:600;letter-spacing:-.035em}
 .editorial-projects .project-category {font-size:11px;letter-spacing:.09em;text-transform:uppercase}
 @media(max-width:680px){.editorial-hero{min-height:510px;padding:25px 22px}.hero-topline{top:22px;left:22px;right:22px;font-size:9px}.hero-topline span:last-child{display:none}.editorial-hero h2{font-size:clamp(51px,13vw,78px)}.hero-footer{left:22px;right:22px;font-size:8px}.hero-footer span:last-child{display:none}.hero-actions{margin-bottom:55px}}
+
+/* Project detail and contact refinements */
+.preview-open {overflow:hidden}
+.portfolio-modal {max-width:min(880px,92vw);border:1px solid #454646;background:#1c1d1f}
+.portfolio-modal .modal-img-wrapper img {max-height:60vh;object-fit:contain}
+.case-caption {margin-top:12px;font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:#aaa9a5}
+.case-contact {display:inline-flex;margin-top:18px;padding:12px 16px;background:#eeede8;border-radius:5px;color:#18191b;font-weight:600;font-size:12px}
+.case-contact:hover {background:#fff}
+.contact-lead {margin:0 0 24px;color:#bbbcb8;line-height:1.8}
+.contact-lead a {color:#f0efe9;text-decoration:underline;text-underline-offset:4px}
+.mapbox[hidden] {display:none!important}
+.filter-list {flex-wrap:wrap;row-gap:12px}
+@media(max-width:580px){.portfolio-modal{max-width:95vw}.hero-primary,.hero-secondary{gap:15px}}
