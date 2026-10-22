@@ -1,0 +1,32 @@
+name: Portfolio checks
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [redesign/dark-swiss-2026]
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check JavaScript syntax
+        run: node --check assets/js/script.js
+      - name: Verify essential files and project assets
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const assert = require('node:assert/strict');
+          const html = fs.readFileSync('index.html','utf8');
+          const js = fs.readFileSync('assets/js/script.js','utf8');
+          for (const file of ['assets/css/style.css','assets/css/redesign.css','assets/js/script.js']) assert.ok(fs.existsSync(file), 'Missing '+file);
+          for (const page of ['about','resume','portfolio','contact']) assert.ok(html.includes('data-page="'+page+'"'), 'Missing page '+page);
+          const imgs = [...html.matchAll(/data-project-url="([^"]+)"/g)].map(m => m[1].replace(/^\.\//,''));
+          assert.equal(imgs.length,9,'Expected nine project previews');
+          for (const file of imgs) assert.ok(fs.existsSync(file), 'Missing project image: '+file);
+          assert.ok(html.includes('data-portfolio-modal-description'),'Missing case description');
+          assert.ok(js.includes('portfolioModalDescription.textContent'),'Missing case description logic');
+          console.log('Smoke checks passed:',imgs.length,'project images verified.');
+          NODE
