@@ -5,7 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alexandr Madibaev - Personal Portfolio</title>
+    <title>Alexandr Madibaev — Graphic & Web Designer</title>
+    <meta name="description" content="Alexandr Madibaev — graphic designer and web developer. Branding, digital products, websites and visual identities. Explore selected work and get in touch.">
+    <meta name="theme-color" content="#101113">
+    <meta property="og:title" content="Alexandr Madibaev — Graphic & Web Designer">
+    <meta property="og:description" content="Branding, websites and digital experiences. Selected work by Alexandr Madibaev.">
 
     <!--
     - favicon
@@ -16,13 +20,14 @@
     - custom css link
   -->
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/redesign.css">
 
     <!--
     - google font link
   -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <!-- 
       font-awesome link 
       -->
@@ -155,7 +160,7 @@
 
 
                 <div style="text-align: center;">
-                    <a href="https://t.me/Alexandr_Madibaev" class="btn" target="_blank">
+                    <a href="https://t.me/Alexandr_Madibaev" class="btn" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-telegram" aria-hidden="true"></i>Send me
                     </a>
                 </div>
@@ -180,7 +185,7 @@
                 <ul class="navbar-list">
 
                     <li class="navbar-item">
-                        <button class="navbar-link  active" data-nav-link>About</button>
+                        <button class="navbar-link  active" data-nav-link aria-current="page">About</button>
                     </li>
 
                     <li class="navbar-item">
@@ -214,9 +219,17 @@
             <article class="about  active" data-page="about">
 
                 <header>
-                    <h2 class="h2 article-title">About me</h2>
+                    <h2 class="h2 article-title">Design that works.</h2>
                 </header>
 
+                <section class="editorial-hero" aria-labelledby="hero-title">
+  <div class="hero-topline"><span><span class="availability-dot"></span> Available for selected projects</span><span>Dushanbe · Worldwide</span></div>
+  <p class="hero-eyebrow">Independent graphic designer & web developer / 2026</p>
+  <h2 id="hero-title">Ideas into<br><em>identities.</em></h2>
+  <p class="hero-summary">I create distinctive brands, digital experiences and visual systems that make businesses stand out.</p>
+  <div class="hero-actions"><button type="button" class="hero-primary" data-jump="portfolio">Explore projects <span aria-hidden="true">↗</span></button><a class="hero-secondary" href="https://t.me/Alexandr_Madibaev" target="_blank" rel="noopener noreferrer">Start a project <span aria-hidden="true">↗</span></a></div>
+  <div class="hero-footer"><span>GRAPHIC DESIGN / BRANDING / WEB</span><span>SCROLL TO EXPLORE ↓</span></div>
+</section>
                 <section class="about-text">
                     <p>
                         I am a Web/Graphic Designer from Dushanbe, Tajikistan, with over 5 years of experience in creating modern and stylish websites, illustrations, and typography tailored to client preferences. I enjoy delighting clients with creative and ready-to-use products
@@ -238,7 +251,7 @@
 
                 <section class="service">
 
-                    <h3 class="h3 service-title">What i'm doing</h3>
+                    <h3 class="h3 service-title">What I do</h3>
 
                     <ul class="service-list">
 
@@ -660,7 +673,8 @@
             <article class="portfolio" data-page="portfolio">
 
                 <header>
-                    <h2 class="h2 article-title">Portfolio</h2>
+                    <h2 class="h2 article-title">Selected work<span class="heading-period">.</span></h2>
+                    <p class="section-intro">A collection of brand identities, digital products and visual experiments.</p>
                 </header>
 
                 <section class="projects">
@@ -681,13 +695,13 @@
 
                         <li class="filter-item">
                             <button data-filter-btn>Branding</button>
-                        </li>
+                        </li><li class="filter-item"><button data-filter-btn>Applications</button></li><li class="filter-item"><button data-filter-btn>Web development</button></li>
 
                     </ul>
 
                     <div class="filter-select-box">
 
-                        <button class="filter-select" data-select>
+                        <button class="filter-select" data-select aria-expanded="false">
 
               <div class="select-value" data-selecct-value>Select category</div>
 
@@ -700,29 +714,29 @@
                         <ul class="select-list">
 
                             <li class="filter-item">
-                                <button class="active" data-filter-btn>All</button>
+                                <button class="active" data-select-item>All</button>
                             </li>
 
                             <li class="filter-item">
-                                <button data-filter-btn>Web Design</button>
+                                <button data-select-item>Web Design</button>
                             </li>
 
                             <li class="filter-item">
-                                <button data-filter-btn>Graphic Design</button>
+                                <button data-select-item>Graphic Design</button>
                             </li>
 
                             <li class="filter-item">
-                                <button data-filter-btn>Branding</button>
-                            </li>
+                                <button data-select-item>Branding</button>
+                            </li><li class="filter-item"><button data-select-item>Applications</button></li><li class="filter-item"><button data-select-item>Web development</button></li>
 
                         </ul>
 
                     </div>
 
-                    <ul class="project-list">
+                    <ul class="project-list editorial-projects">
 
                         <li class="project-item  active" data-filter-item data-category="graphic design">
-                            <a href="javascript:void(0);" data-project-url="./assets/images/project-1.jpg" data-project-title="The concept of advertising 'CityLight' for Alif Bank" data-project-category="Graphic Design">
+                            <a href="javascript:void(0);" data-project-url="./assets/images/project-1.jpg" data-project-title="The concept of advertising 'CityLight' for Alif Bank" data-project-category="Graphic Design" data-project-description="Advertising concept for Alif Bank, presented as a CityLight outdoor visual.">
 
                                 <figure class="project-img">
                                     <div class="project-item-icon-box">
@@ -740,7 +754,7 @@
                         </li>
 
                         <li class="project-item  active" data-filter-item data-category="graphic design">
-                            <a href="javascript:void(0);" data-project-url="./assets/images/project-2.png" data-project-title="Social advertising on the billboard" data-project-category="Graphic Design">
+                            <a href="javascript:void(0);" data-project-url="./assets/images/project-2.png" data-project-title="Social advertising on the billboard" data-project-category="Graphic Design" data-project-description="Social advertising composition developed for a billboard format.">
 
                                 <figure class="project-img">
                                     <div class="project-item-icon-box">
@@ -758,7 +772,7 @@
                         </li>
 
                         <li class="project-item  active" data-filter-item data-category="web design">
-                            <a href="javascript:void(0);" data-project-url="./assets/images/project-3.jpg" data-project-title="Web page for the lighting equipment store Damiri" data-project-category="Web design">
+                            <a href="javascript:void(0);" data-project-url="./assets/images/project-3.jpg" data-project-title="Web page for the lighting equipment store Damiri" data-project-category="Web design" data-project-description="Web page design for Damiri, a lighting equipment store.">
 
                                 <figure class="project-img">
                                     <div class="project-item-icon-box">
@@ -776,7 +790,7 @@
                         </li>
 
                         <li class="project-item  active" data-filter-item data-category="applications">
-                            <a href="javascript:void(0);" data-project-url="./assets/images/project-4.png" data-project-title="Brawlhalla" data-project-category="Applications">
+                            <a href="javascript:void(0);" data-project-url="./assets/images/project-4.png" data-project-title="Brawlhalla" data-project-category="Applications" data-project-description="Application-related visual concept shown in the original portfolio.">
 
                                 <figure class="project-img">
                                     <div class="project-item-icon-box">
@@ -794,7 +808,7 @@
                         </li>
 
                         <li class="project-item  active" data-filter-item data-category="web design">
-                            <a href="javascript:void(0);" data-project-url="./assets/images/project-5.png" data-project-title="DSM." data-project-category="Web design">
+                            <a href="javascript:void(0);" data-project-url="./assets/images/project-5.png" data-project-title="DSM." data-project-category="Web design" data-project-description="Digital web design project titled DSM.">
 
                                 <figure class="project-img">
                                     <div class="project-item-icon-box">
@@ -812,7 +826,7 @@
                         </li>
 
                         <li class="project-item  active" data-filter-item data-category="web design">
-                            <a href="javascript:void(0);" data-project-url="./assets/images/project-6.png" data-project-title="MetaSpark" data-project-category="Web design">
+                            <a href="javascript:void(0);" data-project-url="./assets/images/project-6.png" data-project-title="MetaSpark" data-project-category="Web design" data-project-description="Web interface design project titled MetaSpark.">
 
                                 <figure class="project-img">
                                     <div class="project-item-icon-box">
@@ -830,7 +844,7 @@
                         </li>
 
                         <li class="project-item  active" data-filter-item data-category="web development">
-                            <a href="javascript:void(0);" data-project-url="./assets/images/project-7.png" data-project-title="Summary" data-project-category="Web development">
+                            <a href="javascript:void(0);" data-project-url="./assets/images/project-7.png" data-project-title="Summary" data-project-category="Web development" data-project-description="Web development project titled Summary.">
 
                                 <figure class="project-img">
                                     <div class="project-item-icon-box">
@@ -848,7 +862,7 @@
                         </li>
 
                         <li class="project-item  active" data-filter-item data-category="applications">
-                            <a href="javascript:void(0);" data-project-url="./assets/images/project-8.jpg" data-project-title="Task Manager" data-project-category="Applications">
+                            <a href="javascript:void(0);" data-project-url="./assets/images/project-8.jpg" data-project-title="Task Manager" data-project-category="Applications" data-project-description="Task management application interface concept.">
 
                                 <figure class="project-img">
                                     <div class="project-item-icon-box">
@@ -866,7 +880,7 @@
                         </li>
 
                         <li class="project-item  active" data-filter-item data-category="web development">
-                            <a href="javascript:void(0);" data-project-url="./assets/images/project-9.png" data-project-title="Arrival" data-project-category="Web development">
+                            <a href="javascript:void(0);" data-project-url="./assets/images/project-9.png" data-project-title="Arrival" data-project-category="Web development" data-project-description="Web development project titled Arrival.">
 
                                 <figure class="project-img">
                                     <div class="project-item-icon-box">
@@ -1095,7 +1109,7 @@
                     <h2 class="h2 article-title">Contact</h2>
                 </header>
 
-                <section class="mapbox" data-mapbox>
+                <section class="mapbox" data-mapbox hidden>
                     <figure>
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3119.2072242933496!2d68.78847717648273!3d38.575075565657286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38b5d1a3306f8cf1%3A0x576f77fd7e4a8c39!2sPushkin%20Street%204%2C%20Dushanbe%2C%20Tajikistan!5e0!3m2!1sen!2sbd!4v1719825786262!5m2!1sen!2sbd"
                             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -1103,23 +1117,22 @@
                 </section>
 
                 <section class="contact-form">
-                    <h3 class="h3 form-title">Contact Form</h3>
-                    <form action="https://getform.io/f/zbxddnkb" method="POST" class="form" data-form>
+                    <h3 class="h3 form-title">Tell me about your project</h3><p class="contact-lead">Share your idea, timeline and budget. Or reach me directly on <a href="https://t.me/Alexandr_Madibaev" target="_blank" rel="noopener noreferrer">Telegram ↗</a>.</p>
+                    <form action="https://getform.io/f/zbxddnkb" method="POST" class="form" data-form enctype="multipart/form-data">
                         <div class="input-wrapper">
                             <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
                             <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
-                            <input type="tel" name="phone" class="form-input" placeholder="Phone number" required data-form-input>
+                            <input type="tel" name="phone" class="form-input" placeholder="Phone number (optional)" data-form-input>
 
                         </div>
-                        <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
-                        <input type="file" name="file" class="form-input" placeholder="Pin a file" required data-form-input>
+                        <textarea name="message" class="form-input" placeholder="Tell me about your project, timeline and budget" required data-form-input></textarea>
+                        <input type="file" name="file" class="form-input" aria-label="Optional project attachment" data-form-input>
                         <button class="form-btn" type="submit" data-form-btn="" style="margin-top: 20px;">
             <ion-icon name="paper-plane" role="img" class="md hydrated" aria-label="paper plane"></ion-icon>
             <span>Send Message</span>
         </button>
 
-                        <!-- Скрытое поле для указания вашего Getform endpoint -->
-                        <input type="hidden" name="form_id" value="your_getform_endpoint_here">
+
                     </form>
                 </section>
 
@@ -1148,44 +1161,15 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-    <!-- Тест навигации -->
     <script>
-        // Проверяем, что скрипт загрузился
-        console.log('Скрипт загружен');
-        
-        // Проверяем элементы навигации
-        document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('[data-nav-link]');
-            const pages = document.querySelectorAll('[data-page]');
-            
-            console.log('Найдено кнопок навигации:', navLinks.length);
-            console.log('Найдено страниц:', pages.length);
-            
-            // Добавляем обработчики событий для отладки
-            navLinks.forEach((link, index) => {
-                link.addEventListener('click', function() {
-                    console.log('Клик по кнопке:', this.textContent);
-                    
-                    // Убираем активный класс со всех кнопок и страниц
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    pages.forEach(p => p.classList.remove('active'));
-                    
-                    // Добавляем активный класс к текущей кнопке
-                    this.classList.add('active');
-                    
-                    // Находим соответствующую страницу
-                    const pageName = this.textContent.toLowerCase();
-                    const targetPage = document.querySelector(`[data-page="${pageName}"]`);
-                    
-                    if (targetPage) {
-                        targetPage.classList.add('active');
-                        console.log('Переключились на страницу:', pageName);
-                    } else {
-                        console.log('Страница не найдена:', pageName);
-                    }
-                });
-            });
+      document.querySelectorAll('[data-jump]').forEach(button => {
+        button.addEventListener('click', () => {
+          const page = button.dataset.jump;
+          const target = Array.from(document.querySelectorAll('[data-nav-link]'))
+            .find(link => link.textContent.trim().toLowerCase() === page);
+          if (target) target.click();
         });
+      });
     </script>
 
     <!--
@@ -1193,8 +1177,8 @@
   -->
     <div class="modal-container" data-portfolio-modal-container>
         <div class="overlay" data-portfolio-overlay></div>
-        <section class="portfolio-modal">
-            <button class="modal-close-btn" data-portfolio-modal-close-btn>
+        <section class="portfolio-modal" role="dialog" aria-modal="true" aria-label="Project preview" tabindex="-1">
+            <button class="modal-close-btn" data-portfolio-modal-close-btn aria-label="Close project preview">
                 <ion-icon name="close-outline"></ion-icon>
             </button>
             <figure class="modal-img-wrapper">
@@ -1202,7 +1186,7 @@
             </figure>
             <div class="modal-content">
                 <h4 class="h3 modal-title" data-portfolio-modal-title></h4>
-                <p class="modal-category" data-portfolio-modal-category></p>
+                <p class="modal-category" data-portfolio-modal-category></p><p class="case-description" data-portfolio-modal-description></p><p class="case-caption">Selected work · Project preview</p><a class="case-contact" href="https://t.me/Alexandr_Madibaev" target="_blank" rel="noopener noreferrer">Discuss a similar project ↗</a>
             </div>
         </section>
     </div>
