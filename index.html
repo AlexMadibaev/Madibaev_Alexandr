@@ -222,6 +222,14 @@
                     <h2 class="h2 article-title">Design that works.</h2>
                 </header>
 
+                <section class="editorial-hero" aria-labelledby="hero-title">
+  <div class="hero-topline"><span><span class="availability-dot"></span> Available for selected projects</span><span>Dushanbe · Worldwide</span></div>
+  <p class="hero-eyebrow">Independent graphic designer & web developer / 2026</p>
+  <h2 id="hero-title">Ideas into<br><em>identities.</em></h2>
+  <p class="hero-summary">I create distinctive brands, digital experiences and visual systems that make businesses stand out.</p>
+  <div class="hero-actions"><button type="button" class="hero-primary" data-jump="portfolio">Explore projects <span aria-hidden="true">↗</span></button><a class="hero-secondary" href="https://t.me/Alexandr_Madibaev" target="_blank" rel="noopener noreferrer">Start a project <span aria-hidden="true">↗</span></a></div>
+  <div class="hero-footer"><span>GRAPHIC DESIGN / BRANDING / WEB</span><span>SCROLL TO EXPLORE ↓</span></div>
+</section>
                 <section class="about-text">
                     <p>
                         I am a Web/Graphic Designer from Dushanbe, Tajikistan, with over 5 years of experience in creating modern and stylish websites, illustrations, and typography tailored to client preferences. I enjoy delighting clients with creative and ready-to-use products
@@ -665,7 +673,8 @@
             <article class="portfolio" data-page="portfolio">
 
                 <header>
-                    <h2 class="h2 article-title">Portfolio</h2>
+                    <h2 class="h2 article-title">Selected work<span class="heading-period">.</span></h2>
+                    <p class="section-intro">A collection of brand identities, digital products and visual experiments.</p>
                 </header>
 
                 <section class="projects">
@@ -724,7 +733,7 @@
 
                     </div>
 
-                    <ul class="project-list">
+                    <ul class="project-list editorial-projects">
 
                         <li class="project-item  active" data-filter-item data-category="graphic design">
                             <a href="javascript:void(0);" data-project-url="./assets/images/project-1.jpg" data-project-title="The concept of advertising 'CityLight' for Alif Bank" data-project-category="Graphic Design">
@@ -1153,44 +1162,15 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-    <!-- Тест навигации -->
     <script>
-        // Проверяем, что скрипт загрузился
-        console.log('Скрипт загружен');
-        
-        // Проверяем элементы навигации
-        document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('[data-nav-link]');
-            const pages = document.querySelectorAll('[data-page]');
-            
-            console.log('Найдено кнопок навигации:', navLinks.length);
-            console.log('Найдено страниц:', pages.length);
-            
-            // Добавляем обработчики событий для отладки
-            navLinks.forEach((link, index) => {
-                link.addEventListener('click', function() {
-                    console.log('Клик по кнопке:', this.textContent);
-                    
-                    // Убираем активный класс со всех кнопок и страниц
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    pages.forEach(p => p.classList.remove('active'));
-                    
-                    // Добавляем активный класс к текущей кнопке
-                    this.classList.add('active');
-                    
-                    // Находим соответствующую страницу
-                    const pageName = this.textContent.toLowerCase();
-                    const targetPage = document.querySelector(`[data-page="${pageName}"]`);
-                    
-                    if (targetPage) {
-                        targetPage.classList.add('active');
-                        console.log('Переключились на страницу:', pageName);
-                    } else {
-                        console.log('Страница не найдена:', pageName);
-                    }
-                });
-            });
+      document.querySelectorAll('[data-jump]').forEach(button => {
+        button.addEventListener('click', () => {
+          const page = button.dataset.jump;
+          const target = Array.from(document.querySelectorAll('[data-nav-link]'))
+            .find(link => link.textContent.trim().toLowerCase() === page);
+          if (target) target.click();
         });
+      });
     </script>
 
     <!--
