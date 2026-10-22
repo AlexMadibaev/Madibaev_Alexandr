@@ -63,3 +63,10 @@ a:focus-visible,button:focus-visible {outline:2px solid #f4f3ee;outline-offset:4
 .mapbox[hidden] {display:none!important}
 .filter-list {flex-wrap:wrap;row-gap:12px}
 @media(max-width:580px){.portfolio-modal{max-width:95vw}.hero-primary,.hero-secondary{gap:15px}}
+
+/* Project storytelling */
+.case-description {margin-top:16px;max-width:56ch;color:#c4c4c0;font-size:14px;line-height:1.8}
+.portfolio-modal .modal-content {padding-bottom:8px}
+.project-item a:focus-visible .project-img {outline:2px solid #eae9e4;outline-offset:5px}
+.contact-form .form-input:focus {border-color:#c6c5bf}
+.navbar-link[aria-current="page"] {color:#f2f1ed}
