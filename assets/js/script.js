@@ -65,6 +65,7 @@ const portfolioOverlay = document.querySelector("[data-portfolio-overlay]");
 const portfolioModalImg = document.querySelector("[data-portfolio-modal-img]");
 const portfolioModalTitle = document.querySelector("[data-portfolio-modal-title]");
 const portfolioModalCategory = document.querySelector("[data-portfolio-modal-category]");
+const portfolioModalDescription = document.querySelector("[data-portfolio-modal-description]");
 
 // portfolio modal toggle function
 const portfolioModalFunc = function () {
@@ -85,6 +86,7 @@ for (let i = 0; i < portfolioItems.length; i++) {
       portfolioModalImg.alt = anchorTag.dataset.projectTitle;
       portfolioModalTitle.textContent = anchorTag.dataset.projectTitle;
       portfolioModalCategory.textContent = anchorTag.dataset.projectCategory;
+      portfolioModalDescription.textContent = anchorTag.dataset.projectDescription || "";
 
       portfolioModalFunc();
     }
@@ -104,7 +106,7 @@ const selectItems = document.querySelectorAll("[data-select-item]");
 const selectValue = document.querySelector("[data-selecct-value]");
 const filterBtn = document.querySelectorAll("[data-filter-btn]");
 
-select.addEventListener("click", function () { elementToggleFunc(this); });
+select.addEventListener("click", function () { elementToggleFunc(this); this.setAttribute("aria-expanded", String(this.classList.contains("active"))); });
 
 // add event in all select items
 for (let i = 0; i < selectItems.length; i++) {
@@ -113,6 +115,7 @@ for (let i = 0; i < selectItems.length; i++) {
     let selectedValue = this.innerText.toLowerCase();
     selectValue.innerText = this.innerText;
     elementToggleFunc(select);
+    select.setAttribute("aria-expanded", "false");
     filterFunc(selectedValue);
 
   });
@@ -179,27 +182,26 @@ for (let i = 0; i < formInputs.length; i++) {
 
 
 
-// page navigation variables
-const navigationLinks = document.querySelectorAll("[data-nav-link]");
-const pages = document.querySelectorAll("[data-page]");
-
-// add event to all nav link
-for (let i = 0; i < navigationLinks.length; i++) {
-  navigationLinks[i].addEventListener("click", function () {
-
-    for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
-        window.scrollTo(0, 0);
-      } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
-      }
-    }
-
+// Accessible, deep-linkable page navigation
+const navigationLinks = [...document.querySelectorAll("[data-nav-link]")];
+const pages = [...document.querySelectorAll("[data-page]")];
+const knownPages = new Set(pages.map(page => page.dataset.page));
+function showPage(pageName, updateHash = true) {
+  const name = knownPages.has(pageName) ? pageName : "about";
+  pages.forEach(page => page.classList.toggle("active", page.dataset.page === name));
+  navigationLinks.forEach(link => {
+    const active = link.textContent.trim().toLowerCase() === name;
+    link.classList.toggle("active", active);
+    if (active) link.setAttribute("aria-current", "page");
+    else link.removeAttribute("aria-current");
   });
+  if (updateHash && location.hash !== "#" + name) history.replaceState(null, "", "#" + name);
+  window.scrollTo({ top: 0, behavior: "instant" });
 }
+navigationLinks.forEach(link => link.addEventListener("click", () => showPage(link.textContent.trim().toLowerCase())));
+window.addEventListener("hashchange", () => showPage(location.hash.slice(1).toLowerCase(), false));
+showPage(location.hash.slice(1).toLowerCase(), false);
+
 // Keyboard accessibility for the project preview
 let lastProjectTrigger = null;
 document.querySelectorAll('.project-item a').forEach(link => {
@@ -210,4 +212,15 @@ document.addEventListener('keydown', event => {
     portfolioModalFunc();
     if (lastProjectTrigger) lastProjectTrigger.focus();
   }
+});
+
+// Keep keyboard focus within the open preview dialog.
+document.addEventListener('keydown', event => {
+  if (event.key !== 'Tab' || !portfolioModalContainer.classList.contains('active')) return;
+  const dialog = portfolioModalContainer.querySelector('[role="dialog"]');
+  const focusable = [...dialog.querySelectorAll('button:not([disabled]),a[href]')];
+  if (!focusable.length) return;
+  const first = focusable[0], last = focusable[focusable.length - 1];
+  if (event.shiftKey && document.activeElement === first) {event.preventDefault();last.focus();}
+  else if (!event.shiftKey && document.activeElement === last) {event.preventDefault();first.focus();}
 });
