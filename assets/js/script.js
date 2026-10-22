@@ -74,12 +74,15 @@ const portfolioModalFunc = function () {
   portfolioOverlay.classList.toggle("active", isOpening);
   document.body.classList.toggle("preview-open", isOpening);
   if (isOpening) portfolioModalCloseBtn.focus();
+  else if (lastProjectTrigger) lastProjectTrigger.focus();
 }
 
 // add click event to all portfolio items
 for (let i = 0; i < portfolioItems.length; i++) {
 
-  portfolioItems[i].addEventListener("click", function () {
+  portfolioItems[i].addEventListener("click", function (event) {
+    event.preventDefault();
+    lastProjectTrigger = this.querySelector("a");
     const anchorTag = this.querySelector("a");
     if (anchorTag) {
       portfolioModalImg.src = anchorTag.dataset.projectUrl;
@@ -195,17 +198,18 @@ function showPage(pageName, updateHash = true) {
     if (active) link.setAttribute("aria-current", "page");
     else link.removeAttribute("aria-current");
   });
-  if (updateHash && location.hash !== "#" + name) history.replaceState(null, "", "#" + name);
-  window.scrollTo({ top: 0, behavior: "instant" });
+  if (updateHash && location.hash !== "#" + name) history.pushState(null, "", "#" + name);
+  window.scrollTo({ top: 0, behavior: "auto" });
 }
 navigationLinks.forEach(link => link.addEventListener("click", () => showPage(link.textContent.trim().toLowerCase())));
 window.addEventListener("hashchange", () => showPage(location.hash.slice(1).toLowerCase(), false));
+window.addEventListener("popstate", () => showPage(location.hash.slice(1).toLowerCase(), false));
 showPage(location.hash.slice(1).toLowerCase(), false);
 
 // Keyboard accessibility for the project preview
 let lastProjectTrigger = null;
 document.querySelectorAll('.project-item a').forEach(link => {
-  link.addEventListener('click', () => { lastProjectTrigger = link; });
+  link.addEventListener('click', event => { event.preventDefault(); lastProjectTrigger = link; });
 });
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape' && portfolioModalContainer.classList.contains('active')) {
@@ -223,4 +227,12 @@ document.addEventListener('keydown', event => {
   const first = focusable[0], last = focusable[focusable.length - 1];
   if (event.shiftKey && document.activeElement === first) {event.preventDefault();last.focus();}
   else if (!event.shiftKey && document.activeElement === last) {event.preventDefault();first.focus();}
+});
+
+// Avoid double submissions while the browser navigates to the form provider.
+if (form) form.addEventListener('submit', event => {
+  if (!form.checkValidity()) {event.preventDefault();form.reportValidity();return;}
+  formBtn.disabled = true;
+  const label = formBtn.querySelector('span');
+  if (label) label.textContent = 'Sending…';
 });
