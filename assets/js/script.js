@@ -40,7 +40,7 @@ for (let i = 0; i < testimonialsItem.length; i++) {
 
     modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
     modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
-    modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
+    modalTitle.textContent = this.querySelector("[data-testimonials-title]").textContent;
     modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
 
     testimonialsModalFunc();
@@ -68,8 +68,11 @@ const portfolioModalCategory = document.querySelector("[data-portfolio-modal-cat
 
 // portfolio modal toggle function
 const portfolioModalFunc = function () {
-  portfolioModalContainer.classList.toggle("active");
-  portfolioOverlay.classList.toggle("active");
+  const isOpening = !portfolioModalContainer.classList.contains("active");
+  portfolioModalContainer.classList.toggle("active", isOpening);
+  portfolioOverlay.classList.toggle("active", isOpening);
+  document.body.classList.toggle("preview-open", isOpening);
+  if (isOpening) portfolioModalCloseBtn.focus();
 }
 
 // add click event to all portfolio items
@@ -80,8 +83,8 @@ for (let i = 0; i < portfolioItems.length; i++) {
     if (anchorTag) {
       portfolioModalImg.src = anchorTag.dataset.projectUrl;
       portfolioModalImg.alt = anchorTag.dataset.projectTitle;
-      portfolioModalTitle.innerHTML = anchorTag.dataset.projectTitle;
-      portfolioModalCategory.innerHTML = anchorTag.dataset.projectCategory;
+      portfolioModalTitle.textContent = anchorTag.dataset.projectTitle;
+      portfolioModalCategory.textContent = anchorTag.dataset.projectCategory;
 
       portfolioModalFunc();
     }
@@ -197,3 +200,14 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+// Keyboard accessibility for the project preview
+let lastProjectTrigger = null;
+document.querySelectorAll('.project-item a').forEach(link => {
+  link.addEventListener('click', () => { lastProjectTrigger = link; });
+});
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && portfolioModalContainer.classList.contains('active')) {
+    portfolioModalFunc();
+    if (lastProjectTrigger) lastProjectTrigger.focus();
+  }
+});
